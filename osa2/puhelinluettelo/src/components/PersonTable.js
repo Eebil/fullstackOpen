@@ -1,4 +1,4 @@
-const PersonTable = ({persons, showFilter}) => {
+const PersonTable = ({persons, showFilter, handleDelete}) => {
   return(
     <div>
       <h2>Numbers</h2>
@@ -6,9 +6,10 @@ const PersonTable = ({persons, showFilter}) => {
         <tbody>
           {persons.filter(person => showFilter.test(person.name)).map(person => {
             return(
-            <tr key={person.name}>
+            <tr key={person.id}>
               <td>{person.name}</td>
               <td>{person.number}</td>
+              <td><button onClick={() => handleDelete(person.id)}>Delete</button></td>
             </tr>
           )})}
         </tbody>
